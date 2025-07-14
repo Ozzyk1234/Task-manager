@@ -9,7 +9,7 @@ export async function GET() {
       orderBy: { createdAt: 'desc' },
     });
     return NextResponse.json({ success: true, tasks });
-  } catch {
+  } catch (error: any) {
     return NextResponse.json(
       { success: false, error: 'Failed to fetch tasks' },
       { status: 500 }
@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
       data: { title, description, userId: user.id },
     });
     return NextResponse.json({ success: true, task });
-  } catch {
+  } catch (error: any) {
     return NextResponse.json(
       { success: false, error: 'Failed to create task' },
       { status: 500 }
